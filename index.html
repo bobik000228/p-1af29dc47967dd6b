@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formwerk: seven modules, one controller</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "./vendor/three/build/three.module.js",
+  "three/addons/": "./vendor/three/addons/"
+} }
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="index.html"><span></span>FORMWERK</a>
+    <nav>
+      <a href="#modules">Modules</a><a href="#port" class="opt">Port</a><a href="#morphologies">Robots</a><a href="#software" class="opt">Software</a><a href="blog.html">Essay</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <p class="tag">Modular robotics</p>
+    <h1>Seven modules. Any robot. One controller.</h1>
+    <p class="lead">Build the robot the task needs. Rebuild it when the task changes.</p>
+  </div>
+  <figure class="herofig" id="hero">
+    <div class="view" id="hero-view">
+      <div class="hov wrap"><div class="hrow"><b id="hero-title">&nbsp;</b><span class="hpaused" id="hero-paused" title="paused" aria-label="paused"></span></div><span class="hpart" id="hero-part"></span></div>
+      <button class="harrow prev" id="hero-prev" aria-label="previous robot">&lsaquo;</button>
+      <button class="harrow next" id="hero-next" aria-label="next robot">&rsaquo;</button>
+      <span class="hhint" id="hero-hint"></span>
+    </div>
+    <figcaption class="wrap">
+      <div class="hparts" id="hero-parts"></div>
+    </figcaption>
+  </figure>
+</section>
+
+<section id="modules">
+  <div class="wrap">
+    <div class="sh"><span class="no">01</span><h2>Seven modules</h2>
+      <p>Joint and Link build the kinematics. The Hub is the root. Battery and Wheel make it mobile. One sensor, one Hand, and standard tools bolt onto any Joint.</p></div>
+    <div class="mods" id="mods"></div>
+  </div>
+</section>
+
+<section id="port">
+  <div class="wrap">
+    <div class="sh"><span class="no">02</span><h2>The Port</h2>
+      <p>One interface on every module. Any Port mates with any Port: load, power, data, safety.</p></div>
+    <div class="port">
+      <figure>
+        <svg id="port-svg" viewBox="-80 -58 160 116" role="img" aria-label="Port, front view"></svg>
+        <figcaption>Port, front view, ø 70 mm, with the ISO 9409-1-50 tool bolt pattern.</figcaption>
+      </figure>
+      <dl class="pfacts">
+        <dt>Load</dt><dd>Quarter-turn bayonet, no tools, under 10 s.</dd>
+        <dt>Power</dt><dd>48 V DC through every Port.</dd>
+        <dt>Data</dt><dd>Single-pair Ethernet, clocks synchronised.</dd>
+        <dt>Safety</dt><dd>Hardwired stop loop through every module.</dd>
+        <dt>Tools</dt><dd>ISO 9409-1 bolt pattern on the face, so standard tools bolt on.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="morphologies">
+  <div class="wrap">
+    <div class="sh"><span class="no">03</span><h2>Six robots, one stock of parts</h2>
+      <p>Take one robot apart, build the next.</p></div>
+    <div class="tablewrap"><table class="spec matrix" id="matrix"></table></div>
+    <p class="note" id="matrix-note"></p>
+  </div>
+</section>
+
+<section id="software">
+  <div class="wrap">
+    <div class="sh"><span class="no">04</span><h2>One controller for every body</h2>
+      <p>One network for every robot. Each robot tells it what it is built from.</p></div>
+    <figure class="bfig" id="bfig">
+      <svg class="bwires" id="bwires" aria-hidden="true"></svg>
+      <div class="brain" id="brain">
+        <div class="bhead"><b>Controller network</b><span>same weights for every robot</span></div>
+        <svg class="bnet" id="bnet" viewBox="0 6 300 86" aria-hidden="true"></svg>
+        <div class="bio"><span><i class="dn"></i>joint commands</span><span><i class="up"></i>joint angles, tool point</span></div>
+      </div>
+      <div class="bodies" id="bodies"></div>
+      <figcaption><b>Figure 1.</b> Each robot connects through its module list. Point at one to see it.</figcaption>
+    </figure>
+    <p class="swnow">Our first results with a learned controller, in simulation, are positive and
+      being prepared for publication.</p>
+    <p class="goal">Our target is a robot doing a new task within four hours of unpacking the parts, taught with at most five demonstrations and without code.</p>
+  </div>
+</section>
+
+<section id="essay" class="essay">
+  <div class="wrap">
+    <div class="sh"><span class="no">05</span><h2>Essay</h2></div>
+    <p><a class="big" href="blog.html">Built for the work &rarr;</a></p>
+    <p class="note">October 2026.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Formwerk · Prague, Czech Republic</span>
+  </div>
+</footer>
+
+<script type="module" src="js/hero.js"></script>
+<script type="module" src="js/index.js"></script>
+<script type="module" src="js/brain.js"></script>
+</body>
+</html>

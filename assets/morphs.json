@@ -1,0 +1,825 @@
+{
+ "bench_arm": {
+  "title": "Bench arm, 6 DoF",
+  "subtitle": "Hub on table clamp  |  6 Joints  |  Link 300 + elbow Link 250  |  Hand + wrist Eye",
+  "modules": [
+   {
+    "name": "table_clamp",
+    "type": "table_clamp"
+   },
+   {
+    "name": "hub",
+    "type": "hub"
+   },
+   {
+    "name": "joint_1",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "joint_2",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "link_1",
+    "type": "link",
+    "length": 300,
+    "elbow": false
+   },
+   {
+    "name": "joint_3",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "link_2",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "joint_4",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "joint_5",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "joint_6",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "hand",
+    "type": "hand"
+   },
+   {
+    "name": "eye",
+    "type": "eye",
+    "baseline_mm": 80.0
+   }
+  ]
+ },
+ "mobile_base": {
+  "title": "Mobile base",
+  "subtitle": "holonomic  |  Hub + Battery  |  4 Joints in wheel mode  |  4 Wheels \u00f8200  |  Eye on top",
+  "modules": [
+   {
+    "name": "hub",
+    "type": "hub"
+   },
+   {
+    "name": "battery",
+    "type": "battery",
+    "voltage": 48
+   },
+   {
+    "name": "joint_w1",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_1",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_w2",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_2",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_w3",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_3",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_w4",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_4",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "eye",
+    "type": "eye",
+    "baseline_mm": 80.0
+   }
+  ]
+ },
+ "mobile_picker": {
+  "title": "Mobile picker",
+  "subtitle": "holonomic omni base + Battery + 4-DoF arm (2 elbow Links)  |  Suction + wrist Eye",
+  "modules": [
+   {
+    "name": "hub",
+    "type": "hub"
+   },
+   {
+    "name": "battery",
+    "type": "battery",
+    "voltage": 48
+   },
+   {
+    "name": "joint_w1",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_1",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_w2",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_2",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_w3",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_3",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_w4",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_4",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_1",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "link_1",
+    "type": "link",
+    "length": 300,
+    "elbow": true
+   },
+   {
+    "name": "joint_2",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "link_2",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "joint_3",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "joint_4",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "suction",
+    "type": "suction",
+    "cup_d": 40.0,
+    "tcp_z": 146.0
+   },
+   {
+    "name": "eye",
+    "type": "eye",
+    "baseline_mm": 80.0
+   }
+  ]
+ },
+ "dual_arm": {
+  "title": "Dual-arm cell, 2 x 4 DoF",
+  "subtitle": "Hub on table clamp  |  2 arms of 4 Joints + elbow Link 250  |  2 Hands  |  Eye on top",
+  "modules": [
+   {
+    "name": "table_clamp",
+    "type": "table_clamp"
+   },
+   {
+    "name": "hub",
+    "type": "hub"
+   },
+   {
+    "name": "joint_l1",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "joint_l2",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "link_l1",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "joint_l3",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "joint_l4",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "hand_l",
+    "type": "hand"
+   },
+   {
+    "name": "joint_r1",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "joint_r2",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "link_r1",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "joint_r3",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "joint_r4",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "hand_r",
+    "type": "hand"
+   },
+   {
+    "name": "eye",
+    "type": "eye",
+    "baseline_mm": 80.0
+   }
+  ]
+ },
+ "inspection_head": {
+  "title": "Inspection head, 2 DoF",
+  "subtitle": "Hub on table clamp  |  Link 300 mast  |  2 Joints S (roll, tilt)  |  Eye",
+  "modules": [
+   {
+    "name": "table_clamp",
+    "type": "table_clamp"
+   },
+   {
+    "name": "hub",
+    "type": "hub"
+   },
+   {
+    "name": "link_1",
+    "type": "link",
+    "length": 300,
+    "elbow": false
+   },
+   {
+    "name": "joint_1",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "joint_2",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "eye",
+    "type": "eye",
+    "baseline_mm": 80.0
+   }
+  ]
+ },
+ "palletizer": {
+  "title": "Palletizer, 5 DoF",
+  "subtitle": "Hub on table clamp  |  yaw + 3 pitch + cup roll  |  elbow Links 400 + 350  |  Suction + wrist Eye",
+  "modules": [
+   {
+    "name": "table_clamp",
+    "type": "table_clamp"
+   },
+   {
+    "name": "hub",
+    "type": "hub"
+   },
+   {
+    "name": "joint_1",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "joint_2",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "link_1",
+    "type": "link",
+    "length": 400,
+    "elbow": true
+   },
+   {
+    "name": "joint_3",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "link_2",
+    "type": "link",
+    "length": 350,
+    "elbow": true
+   },
+   {
+    "name": "joint_4",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "joint_5",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "suction",
+    "type": "suction",
+    "cup_d": 40.0,
+    "tcp_z": 146.0
+   },
+   {
+    "name": "eye",
+    "type": "eye",
+    "baseline_mm": 80.0
+   }
+  ]
+ },
+ "snake": {
+  "title": "Inspection snake, 6 DoF",
+  "subtitle": "Hub on table clamp  |  6 Joints + 5 Links 200 in alternating axes  |  Eye at the tip",
+  "modules": [
+   {
+    "name": "table_clamp",
+    "type": "table_clamp"
+   },
+   {
+    "name": "hub",
+    "type": "hub"
+   },
+   {
+    "name": "joint_1",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "link_1",
+    "type": "link",
+    "length": 200,
+    "elbow": false
+   },
+   {
+    "name": "joint_2",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "link_2",
+    "type": "link",
+    "length": 200,
+    "elbow": false
+   },
+   {
+    "name": "joint_3",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "link_3",
+    "type": "link",
+    "length": 200,
+    "elbow": false
+   },
+   {
+    "name": "joint_4",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "link_4",
+    "type": "link",
+    "length": 200,
+    "elbow": false
+   },
+   {
+    "name": "joint_5",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "link_5",
+    "type": "link",
+    "length": 200,
+    "elbow": false
+   },
+   {
+    "name": "joint_6",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "eye",
+    "type": "eye",
+    "baseline_mm": 80.0
+   }
+  ]
+ },
+ "quadruped": {
+  "title": "Quadruped, 12 DoF",
+  "subtitle": "2 Hubs + Battery  |  4 legs: hip roll M, hip pitch L, knee L + elbow Links 250, 250  |  ball Feet",
+  "modules": [
+   {
+    "name": "hub",
+    "type": "hub"
+   },
+   {
+    "name": "hub_2",
+    "type": "hub"
+   },
+   {
+    "name": "battery",
+    "type": "battery",
+    "voltage": 48
+   },
+   {
+    "name": "joint_a3",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "joint_h3",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "link_t3",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "joint_k3",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "link_s3",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "foot_3",
+    "type": "foot",
+    "d": 60.0
+   },
+   {
+    "name": "joint_a4",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "joint_h4",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "link_t4",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "joint_k4",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "link_s4",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "foot_4",
+    "type": "foot",
+    "d": 60.0
+   },
+   {
+    "name": "joint_a1",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "joint_h1",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "link_t1",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "joint_k1",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "link_s1",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "foot_1",
+    "type": "foot",
+    "d": 60.0
+   },
+   {
+    "name": "joint_a2",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "joint_h2",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "link_t2",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "joint_k2",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "link_s2",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "foot_2",
+    "type": "foot",
+    "d": 60.0
+   }
+  ]
+ },
+ "mobile_manipulator": {
+  "title": "Mobile manipulator, 4 + 6 DoF",
+  "subtitle": "holonomic omni base + Battery + 6-DoF arm  |  Hand + wrist Eye",
+  "modules": [
+   {
+    "name": "hub",
+    "type": "hub"
+   },
+   {
+    "name": "battery",
+    "type": "battery",
+    "voltage": 48
+   },
+   {
+    "name": "joint_w1",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_1",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_w2",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_2",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_w3",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_3",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_w4",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_4",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_1",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "joint_2",
+    "type": "joint",
+    "size": "L"
+   },
+   {
+    "name": "link_1",
+    "type": "link",
+    "length": 300,
+    "elbow": false
+   },
+   {
+    "name": "joint_3",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "link_2",
+    "type": "link",
+    "length": 250,
+    "elbow": true
+   },
+   {
+    "name": "joint_4",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "joint_5",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "joint_6",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "hand",
+    "type": "hand"
+   },
+   {
+    "name": "eye",
+    "type": "eye",
+    "baseline_mm": 80.0
+   }
+  ]
+ },
+ "mobile_mast": {
+  "title": "Mobile inspection mast",
+  "subtitle": "holonomic omni base + Battery  |  Link 450 mast  |  2 Joints S (roll, tilt)  |  Eye",
+  "modules": [
+   {
+    "name": "hub",
+    "type": "hub"
+   },
+   {
+    "name": "battery",
+    "type": "battery",
+    "voltage": 48
+   },
+   {
+    "name": "joint_w1",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_1",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_w2",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_2",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_w3",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_3",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "joint_w4",
+    "type": "joint",
+    "size": "M"
+   },
+   {
+    "name": "wheel_4",
+    "type": "omni_wheel",
+    "d": 200.0,
+    "rollers": 20
+   },
+   {
+    "name": "link_1",
+    "type": "link",
+    "length": 450,
+    "elbow": false
+   },
+   {
+    "name": "joint_1",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "joint_2",
+    "type": "joint",
+    "size": "S"
+   },
+   {
+    "name": "eye",
+    "type": "eye",
+    "baseline_mm": 80.0
+   }
+  ]
+ }
+}

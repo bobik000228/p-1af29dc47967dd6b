@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Built for the work · Formwerk</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "./vendor/three/build/three.module.js",
+  "three/addons/": "./vendor/three/addons/"
+} }
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="index.html"><span></span>FORMWERK</a>
+    <nav><a href="index.html">Overview</a><a href="blog.html">Essay</a></nav>
+  </div>
+</header>
+
+<article class="post">
+<h1>Built for the work</h1>
+<div class="date">October 2026</div>
+
+<p>Most of the money in robotics right now is going into humanoids. The
+argument is simple: the world is built for people, so build a robot shaped
+like a person and it will fit everywhere.</p>
+
+<p>It's a good argument for a living room. It's a bad one for a factory.</p>
+
+<p>A factory is not built for people. It is built for the work, and people were
+adapted to it. Look at what the work actually needs. Lifting boxes off a
+pallet needs reach and strength, not hands. Sorting sheet metal needs a
+suction cup and speed. Tending a lathe needs one precise arm. Harvesting
+needs something that drives along a row. None of these is a person. A
+humanoid can do all of them, but it does each of them worse than a machine
+built for it, and it costs more.</p>
+
+<p>So why doesn't everyone build the right machine for each job? Because a new
+robot is expensive in a way that has little to do with parts. Motors and
+aluminium are cheap. What costs money is the engineering: designing the
+mechanics, writing the kinematic model, tuning the controllers, collecting
+data, integrating safety. That cost is paid again for every new shape. The
+humanoid bet is really a bet that this cost is unavoidable, so you should pay
+it once.</p>
+
+<p>We think it is avoidable.</p>
+
+<h2>Seven parts</h2>
+
+<p>Children solved the hardware half of this problem a long time ago. You don't
+design a new toy for every idea. You have a box of standard parts that fit
+together.</p>
+
+<p>A robot needs very few kinds of parts. A joint that turns. A link that
+spaces two joints apart. A root that holds the computer and the emergency
+stop. A battery for robots that move, and a wheel for them to drive on. An
+eye. A hand. That's seven. Every port also carries the standard industrial
+tool flange pattern, so suction grippers and other standard tools bolt
+straight onto any joint.</p>
+
+<figure class="fig" id="fig1">
+  <div class="box">
+    <div class="view" id="fig1-view"></div>
+    <div class="hint">drag to rotate · click a module</div>
+    <div class="panel" id="fig1-panel"></div>
+  </div>
+  <figcaption><b>Figure 1.</b> The seven modules, design models. Click a module for its function and key data
+    (design targets). Orange rings mark the Ports.</figcaption>
+</figure>
+
+<p>The hard part is not the modules. It's the place where they meet. Every
+module has the same port, and every port carries everything: the mechanical
+load, 48 volts, a gigabit network, a hardwired safety loop, and a small
+memory in which the module describes itself. Its mass. Its inertia. Where
+its ports are. How far it can turn.</p>
+
+<p>That last part matters more than it looks.</p>
+
+<figure class="fig" id="fig2">
+  <div class="box">
+    <div class="view" id="fig2-view"></div>
+    <div class="hint" id="fig2-hint">free Port: hub/top</div>
+    <div class="controls" id="fig2-controls">
+      <span class="lbl">Add</span>
+      <button class="btn" data-add="joint" data-size="S">Joint S</button>
+      <button class="btn" data-add="joint" data-size="M">Joint M</button>
+      <button class="btn" data-add="joint" data-size="L">Joint L</button>
+      <button class="btn" data-add="link">Link</button>
+      <select class="btn" id="fig2-len" aria-label="Link length">
+        <option>150</option><option>200</option><option>250</option><option selected>300</option><option>350</option><option>400</option><option>450</option>
+      </select>
+      <button class="btn" data-add="elbow">Elbow</button>
+      <span class="sep"></span>
+      <span class="lbl">Tool</span>
+      <button class="btn" data-add="hand">Hand</button>
+      <button class="btn" data-add="suction">Suction</button>
+      <button class="btn" data-add="eye">Eye</button>
+      <span class="sep"></span>
+      <button class="btn alt" id="fig2-undo">Remove last</button>
+      <button class="btn alt" id="fig2-reset">Reset</button>
+    </div>
+    <div class="readout" id="fig2-readout"></div>
+    <pre class="urdf" id="fig2-urdf"></pre>
+  </div>
+  <figcaption><b>Figure 2.</b> Assemble a robot. Each click mates a module to the free Port of the chain. The
+    model below is generated from the module descriptors alone, the way the Hub writes it on power-up.</figcaption>
+</figure>
+
+<h2>A robot that reads its own body</h2>
+
+<p>When you switch on a robot made of these parts, it asks each module what it
+is and how it is connected. From the answers it writes its own model. Not
+an approximation from a camera, but the actual numbers, because each module
+is measured when it is made.</p>
+
+<p>Now the software problem changes shape. The usual question is: how do we
+make <em>this</em> robot do a task? The question becomes: how do we make <em>any</em>
+robot built from these seven parts do a task?</p>
+
+<p>That sounds harder. It's actually easier, because it's the kind of problem
+machine learning is good at. We won't train a controller for one robot. We
+will train one controller on hundreds of thousands of robots that never existed: random
+assemblies, in simulation, on GPUs, with randomised friction and payloads
+and delays. The controller sees the body as a list of modules, one token
+each, and learns what joints and links do in general.</p>
+
+<figure class="fig" id="fig3">
+  <div class="box">
+    <canvas class="ik" id="fig3-canvas"></canvas>
+    <div class="controls">
+      <span class="lbl">Links</span>
+      <input type="range" id="fig3-n" min="2" max="7" step="1" value="4" aria-label="Number of links">
+      <span class="mono" id="fig3-nval">4</span>
+      <span class="sep"></span>
+      <button class="btn" id="fig3-rand">Randomise lengths</button>
+    </div>
+    <div class="readout" id="fig3-readout"></div>
+  </div>
+  <figcaption><b>Figure 3.</b> One controller, many bodies. Drag the orange target, or change the number of links
+    or their lengths, and the same controller drives the new body without retuning. Illustration only:
+    a numerical solver stands in for the learned controller.</figcaption>
+</figure>
+
+<p>When a new real robot appears, it will be just one more body. The controller
+will practise on its exact model in simulation, then take over the real
+thing.</p>
+
+<h2>What runs today</h2>
+
+<p>The software that writes the model runs today, ahead of the first modules. Describe
+an assembly, and the generator produces the robot's model from the same
+geometry as the CAD drawings. We generated a thousand random robots this way
+and put them into a physics simulation. Every one of them loaded.</p>
+
+<p>Then we wrote one controller, once, and gave it all of them. No robot gets
+its own code.</p>
+
+<figure class="fig" id="fig4">
+  <div class="box">
+    <img class="sim" src="assets/reach.webp" width="960" height="480"
+         alt="Eight generated robots in simulation, each moving its tool to a red target">
+  </div>
+  <figcaption><b>Figure 4.</b> Eight generated robots in simulation, one controller for all. Two of
+    our example robots and six random ones, not hand-picked. Red: target.</figcaption>
+</figure>
+
+<p>The model is what makes the difference. Without it, a plain position servo
+gets the tool within 5 mm of the target in 41 % of reaches. With the generated
+model it is 99.5 %.</p>
+
+<figure class="fig" id="fig5">
+  <div class="box">
+    <canvas class="ik" id="fig5-canvas"></canvas>
+    <div class="controls">
+      <span class="lbl">Tolerance</span>
+      <input type="range" id="fig5-tol" min="0" max="15" step="1" value="8" aria-label="Tolerance">
+      <span class="mono" id="fig5-tolval">5 mm</span>
+      <span class="sep"></span>
+      <span class="lbl">Base</span>
+      <select class="btn mono" id="fig5-base" aria-label="Base">
+        <option value="all">all</option><option value="fixed">fixed clamp</option><option value="free">wheeled</option>
+      </select>
+    </div>
+    <div class="readout" id="fig5-readout"></div>
+  </div>
+  <figcaption><b>Figure 5.</b> Share of reaches that end within a tolerance, 3462 reaches by 719 random
+    robots in simulation. On hardware the errors will be larger.</figcaption>
+</figure>
+
+<p>Can a network do the same without being given the model? That is the
+research question behind the controller. Our first results with a learned
+controller, in simulation, are positive and being prepared for publication.</p>
+
+<h2>What this buys</h2>
+
+<p>The first measure is simple: how long from a box of parts to a
+robot doing a new task. Today that number is weeks. We want it under
+four hours, with at most five demonstrations of the task.</p>
+
+<p>It is not the only measure. When a joint fails in a normal robot, someone
+orders the spare part for that model and recalibrates the robot. When a
+Formwerk joint fails, you will take another one from the shelf and click it
+in. It tells the robot what it is, so nothing needs recalibrating. One shelf
+with seven kinds of parts serves every robot you own.</p>
+
+<p>And when the job ends, the robot doesn't have to. You take it apart and build
+the next one from the same parts.</p>
+
+<p>That is the real difference from humanoids. Their promise is one body that
+can be reprogrammed for whatever is needed. We go one step further: you
+assemble exactly the hardware you need today, and different hardware
+tomorrow.</p>
+
+<p>If that works, the economics of automation change. A small manufacturer
+can't justify a custom cell for a batch that runs six weeks. It can justify
+rebuilding a robot from parts it already owns.</p>
+
+<p>Humanoids may well win the living room. Factories, building sites and
+fields are full of jobs that need a different body every time. For those,
+the body should be the variable.</p>
+</article>
+
+<footer>
+  <div class="wrap">
+    <span>Formwerk · Prague, Czech Republic</span>
+  </div>
+</footer>
+
+<script type="module" src="js/blog.js"></script>
+<script type="module" src="js/ik2d.js"></script>
+<script type="module" src="js/reach.js"></script>
+</body>
+</html>
